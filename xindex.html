@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Free Fire Rewards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff5722;
+            --primary-dark: #e64a19;
+            --primary-light: #ff7043;
+            --text-color: #333;
+            --text-light: #555;
+            --text-lighter: #777;
+            --shadow-color: rgba(255, 87, 34, 0.2);
+            --border-color: rgba(255, 87, 34, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            background-image: url('https://i.supaimg.com/945dc194-69e6-4763-88a1-f471b25bc8ef.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: rgba(10, 14, 23, 0.9);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        }
+        
+        .logo-container {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .logo {
+            height: 120px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .verified-badge {
+            position: absolute;
+            bottom: 5px;
+            right: calc(50% - 75px);
+            color: #4CAF50;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            border: 1px solid #4CAF50;
+        }
+        
+        .verified-badge i {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+            line-height: 1.3;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .gift-icon {
+            font-size: 28px;
+            vertical-align: middle;
+            margin-right: 8px;
+            animation: bounce 2s infinite;
+        }
+        
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 87, 34, 0.6);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn.disabled {
+            background: #555;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .btn.disabled:hover {
+            transform: none;
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        .progress-text {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            transition: width 0.3s ease;
+        }
+        
+        .code-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .code {
+            background-color: rgba(255, 87, 34, 0.1);
+            padding: 18px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: #ffcc00;
+            margin: 25px 0;
+            border: 2px dashed var(--primary-color);
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 87, 34, 0.3);
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 87, 34, 0.5);
+        }
+        
+        .copy-btn.copied {
+            background: var(--primary-dark);
+            color: white;
+        }
+        
+        .success {
+            color: #ffcc00;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .success-icon {
+            font-size: 28px;
+            margin-right: 10px;
+            animation: tada 1s ease;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ccc;
+            border: 3px solid #444;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+        
+        .step-text {
+            font-size: 12px;
+            color: #ccc;
+            text-align: center;
+            max-width: 80px;
+        }
+        
+        .step-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #333;
+            z-index: 0;
+        }
+        
+        .step-progress {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            z-index: 1;
+            transition: width 0.3s ease;
+        }
+        
+        .countdown {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .social-proof {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #ccc;
+            border: 1px solid rgba(255, 87, 34, 0.2);
+        }
+        
+        .user-avatars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 -5px;
+            border: 2px solid var(--primary-color);
+            object-fit: cover;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #777;
+            margin-top: 35px;
+            line-height: 1.5;
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: all 0.6s ease;
+        }
+        
+        .shine:hover::after {
+            left: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            p {
+                font-size: 15px;
+            }
+            
+            .logo {
+                height: 100px;
+            }
+            
+            .btn {
+                padding: 14px 25px;
+                font-size: 16px;
+            }
+            
+            .code {
+                font-size: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.supaimg.com/0a1bbd29-7e2e-44c6-ae9c-98ac2aa37208.webp" alt="Free Fire Rewards" class="logo">
+            <div class="verified-badge">
+                <i>✓</i> Verified
+            </div>
+        </div>
+        
+        <h1><span class="gift-icon">🎮</span> UNLOCK 1000 FREE FIRE DIAMONDS NOW!</h1>
+        <p>🔥 Limited-time offer for Indian players! Complete 3 simple steps to claim your exclusive Free Fire diamonds for elite bundles, rare skins, and more!</p>
+        
+        <div class="steps">
+            <div class="step-line"></div>
+            <div class="step-progress" id="stepProgress"></div>
+            <div class="step active" id="step1">
+                <div class="step-number">1</div>
+                <div class="step-text">Tap Claim</div>
+            </div>
+            <div class="step" id="step2">
+                <div class="step-number">2</div>
+                <div class="step-text">Watch Short Ad</div>
+            </div>
+            <div class="step" id="step3">
+                <div class="step-number">3</div>
+                <div class="step-text">Get Diamonds</div>
+            </div>
+        </div>
+        
+        <button id="claimBtn" class="btn shine pulse">🔥 CLAIM NOW (FREE)</button>
+        
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-text">Generating your diamond code...</div>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="countdown" id="countdown">Please wait <span id="timer">1:30</span> before claiming</div>
+        
+        <div class="social-proof">
+            <div class="user-avatars">
+                <img src="https://i.supaimg.com/8af63660-5a34-477b-956b-10f96a925535.jpg" alt="User" class="avatar">
+                <img src="https://i.supaimg.com/2a41f949-dacb-48cf-a3f4-1bfea292bf6c.jpg" alt="User" class="avatar">
+                <img src="https://i.supaimg.com/efc73b4f-94f9-4acf-b97f-3265cf61e6d3.jpg" alt="User" class="avatar">
+                <img src="https://i.supaimg.com/1c459ceb-52f5-4eb4-9225-ec9018aa9e53.jpg" alt="User" class="avatar">
+                <img src="https://i.supaimg.com/6628cdf9-364e-41b9-a674-0d1a933e8c00.jpg" alt="User" class="avatar">
+            </div>
+            <div>1,847 players claimed diamonds today!</div>
+            <div class="testimonial">
+                "Got my 1000 diamonds in 2 mins! Bought Chrono skin 😍" 
+                <span class="testimonial-author">- Rahul FF</span>
+            </div>
+            <div class="testimonial" id="recentClaimer" style="display:none;">
+                <span id="recentClaimerName"></span> just claimed 1000 diamonds!
+            </div>
+        </div>
+        
+        <div id="codeContainer" class="code-container">
+            <div class="success">
+                <span class="success-icon">🎉</span> BOOYAH! DIAMONDS UNLOCKED!
+            </div>
+            <p>Your exclusive Free Fire diamond code:</p>
+            <div class="code" id="redeemCode">
+                FF12-8XK9-LZ4D
+                <button class="copy-btn" id="copyBtn">Copy</button>
+            </div>
+            <p>Redeem in Free Fire > Menu > Redeem Code to get 1000 diamonds instantly!</p>
+            
+            <div class="steps">
+                <div class="step-line"></div>
+                <div class="step-progress" style="width: 100%"></div>
+                <div class="step active">
+                    <div class="step-number">✓</div>
+                    <div class="step-text">Done</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">✓</div>
+                    <div class="step-text">Done</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">✓</div>
+                    <div class="step-text">Done</div>
+                </div>
+            </div>
+        </div>
+        
+        <p class="disclaimer">This is not an official Garena promotion. Free Fire is a registered trademark of Garena. By claiming this offer, you agree to watch sponsored content. Only one code can be claimed per device every 24 hours. This is a third-party service not affiliated with Garena. No purchase necessary. For entertainment purposes only.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const claimBtn = document.getElementById('claimBtn');
+            const codeContainer = document.getElementById('codeContainer');
+            const redeemCode = document.getElementById('redeemCode');
+            const copyBtn = document.getElementById('copyBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const countdown = document.getElementById('countdown');
+            const timer = document.getElementById('timer');
+            const stepProgress = document.getElementById('stepProgress');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            const recentClaimer = document.getElementById('recentClaimer');
+            const recentClaimerName = document.getElementById('recentClaimerName');
+            
+            // Constants
+            const AD_LINK = 'https://www.profitableratecpm.com/bt6af9nd49?key=d3873c6c6a51c28e6c0c4a92ac8adf7e';
+            const FOLLOW_DURATION = 1.5 * 60 * 1000; // 1.5 minutes in milliseconds
+            const RESET_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+            const NAMES = ['Rahul', 'Priya', 'Vikram', 'Anjali', 'Karan', 'Neha', 'Rohan', 'Pooja'];
+            
+            // Check user state
+            const firstClickTime = localStorage.getItem('firstClickTime');
+            const lastClaimTime = localStorage.getItem('lastClaimTime');
+            const hasClickedBefore = localStorage.getItem('hasClickedBefore') === 'true';
+            const codeClaimed = localStorage.getItem('codeClaimed') === 'true';
+            const userDeviceId = localStorage.getItem('deviceId') || generateDeviceId();
+            
+            // Generate device ID if not exists
+            if (!localStorage.getItem('deviceId')) {
+                localStorage.setItem('deviceId', userDeviceId);
+            }
+            
+            // Initialize steps
+            updateSteps(1);
+            
+            // Show recent claimer randomly
+            if (Math.random() > 0.5) {
+                recentClaimer.style.display = 'block';
+                recentClaimerName.textContent = NAMES[Math.floor(Math.random() * NAMES.length)];
+            }
+            
+            // Check if we need to reset the process
+            if (lastClaimTime) {
+                const currentTime = Date.now();
+                const timeSinceLastClaim = currentTime - parseInt(lastClaimTime);
+                
+                if (timeSinceLastClaim >= RESET_DURATION) {
+                    // Reset the process after 24 hours
+                    localStorage.removeItem('hasClickedBefore');
+                    localStorage.removeItem('firstClickTime');
+                    localStorage.removeItem('codeClaimed');
+                    localStorage.removeItem('lastClaimTime');
+                    location.reload();
+                }
+            }
+            
+            // Check current state
+            if (hasClickedBefore && !codeClaimed) {
+                const currentTime = Date.now();
+                const timeDiff = currentTime - parseInt(firstClickTime);
+                
+                if (timeDiff < FOLLOW_DURATION) {
+                    // Show countdown timer
+                    startCountdown(FOLLOW_DURATION - timeDiff);
+                } else {
+                    // User can claim now
+                    claimBtn.textContent = '🔓 UNLOCK REDEEM CODE';
+                    claimBtn.classList.remove('disabled');
+                }
+            }
+            
+            // If user has already claimed the code, show it immediately
+            if (codeClaimed) {
+                codeContainer.style.display = 'block';
+                claimBtn.style.display = 'none';
+                progressContainer.style.display = 'none';
+                countdown.style.display = 'none';
+                updateSteps(3);
+            }
+            
+            // Claim button click handler
+            claimBtn.addEventListener('click', function() {
+                if (!hasClickedBefore) {
+                    // First click - redirect to ad
+                    localStorage.setItem('hasClickedBefore', 'true');
+                    localStorage.setItem('firstClickTime', Date.now());
+                    updateSteps(2);
+                    window.location.href = AD_LINK;
+                } else {
+                    const currentTime = Date.now();
+                    const timeDiff = currentTime - parseInt(firstClickTime);
+                    
+                    if (timeDiff >= FOLLOW_DURATION) {
+                        // Show fake loading progress
+                        claimBtn.style.display = 'none';
+                        progressContainer.style.display = 'block';
+                        updateSteps(3);
+                        
+                        // Animate progress bar
+                        let progress = 0;
+                        const interval = setInterval(() => {
+                            progress += 2;
+                            progressBar.style.width = `${progress}%`;
+                            
+                            if (progress >= 100) {
+                                clearInterval(interval);
+                                progressContainer.style.display = 'none';
+                                codeContainer.style.display = 'block';
+                                localStorage.setItem('codeClaimed', 'true');
+                                localStorage.setItem('lastClaimTime', Date.now());
+                                
+                                // Generate a completely random code each time
+                                const newCode = generateRandomCode();
+                                redeemCode.innerHTML = `${newCode} <button class="copy-btn" id="copyBtn">Copy</button>`;
+                                
+                                // Re-attach copy event listener to new button
+                                document.getElementById('copyBtn').addEventListener('click', copyCode);
+                                
+                                // Add celebration effect
+                                codeContainer.classList.add('animate__animated', 'animate__fadeInUp');
+                                
+                                // Update recent claimer
+                                recentClaimer.style.display = 'block';
+                                recentClaimerName.textContent = NAMES[Math.floor(Math.random() * NAMES.length)];
+                            }
+                        }, 50);
+                    } else {
+                        // Show error if trying to claim too soon
+                        alert('Please complete the ad viewing before claiming your reward!');
+                    }
+                }
+            });
+            
+            // Copy button functionality
+            function copyCode() {
+                const code = redeemCode.textContent.trim();
+                navigator.clipboard.writeText(code).then(() => {
+                    const btn = document.getElementById('copyBtn');
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = 'Copy';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
+            }
+            
+            if (copyBtn) {
+                copyBtn.addEventListener('click', copyCode);
+            }
+            
+            // Generate random Free Fire code function
+            function generateRandomCode() {
+                const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+                const numbers = '0123456789';
+                
+                const part1 = `FF${numbers.charAt(Math.floor(Math.random() * numbers.length))}${numbers.charAt(Math.floor(Math.random() * numbers.length))}`;
+                const part2 = `${letters.charAt(Math.floor(Math.random() * letters.length))}${letters.charAt(Math.floor(Math.random() * letters.length))}${numbers.charAt(Math.floor(Math.random() * numbers.length))}${numbers.charAt(Math.floor(Math.random() * numbers.length))}`;
+                const part3 = `${letters.charAt(Math.floor(Math.random() * letters.length))}${letters.charAt(Math.floor(Math.random() * letters.length))}${numbers.charAt(Math.floor(Math.random() * numbers.length))}${letters.charAt(Math.floor(Math.random() * letters.length))}`;
+                
+                return `${part1}-${part2}-${part3}`;
+            }
+            
+            // Generate unique device ID
+            function generateDeviceId() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+            
+            // Countdown timer function
+            function startCountdown(duration) {
+                claimBtn.textContent = '⏳ PLEASE WAIT...';
+                claimBtn.classList.add('disabled');
+                countdown.style.display = 'block';
+                
+                let timerInterval = setInterval(() => {
+                    duration -= 1000;
+                    
+                    if (duration <= 0) {
+                        clearInterval(timerInterval);
+                        countdown.style.display = 'none';
+                        claimBtn.textContent = '🔓 UNLOCK REDEEM CODE';
+                        claimBtn.classList.remove('disabled');
+                        return;
+                    }
+                    
+                    const minutes = Math.floor(duration / (60 * 1000));
+                    const seconds = Math.floor((duration % (60 * 1000)) / 1000);
+                    timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }, 1000);
+            }
+            
+            // Update steps visualization
+            function updateSteps(activeStep) {
+                // Reset all steps
+                step1.classList.remove('active');
+                step2.classList.remove('active');
+                step3.classList.remove('active');
+                
+                // Activate steps up to activeStep
+                if (activeStep >= 1) step1.classList.add('active');
+                if (activeStep >= 2) step2.classList.add('active');
+                if (activeStep >= 3) step3.classList.add('active');
+                
+                // Update progress line
+                if (activeStep === 1) {
+                    stepProgress.style.width = '0%';
+                } else if (activeStep === 2) {
+                    stepProgress.style.width = '50%';
+                } else if (activeStep === 3) {
+                    stepProgress.style.width = '100%';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
